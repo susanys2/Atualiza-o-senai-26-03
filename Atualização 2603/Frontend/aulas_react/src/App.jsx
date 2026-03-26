@@ -3,6 +3,9 @@ import Principal from './pages/Principal';
 import Sobre from './pages/Sobre';
 import NotFound from './pages/NotFound';
 import Perfil from './pages/Perfil';
+import Inicio from './pages/Inicio';
+import Contato from './pages/Contato';
+import Detalhes from './pages/Detalhes';
 
 function App() {
     return (
@@ -14,7 +17,11 @@ function App() {
                 <Route path='*' element={<NotFound />} />
                 {/* O nome é como se fosse a passagem do ID - porem como NOME, pois foi nomeado assim */}
                 <Route path='/perfil/:nome' element={<Perfil />} />
+                <Route path='/inicio' element={<Inicio />} />
+                <Route path='/contato' element={<Contato />} />
+                <Route path='/detalhes' element={<Detalhes />} />
             </Routes>
+           
         </BrowserRouter>
 
     )

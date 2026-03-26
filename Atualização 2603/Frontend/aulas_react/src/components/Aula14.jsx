@@ -24,6 +24,9 @@ const Aula14 = () => {
             <button onClick={() => navigate('/perfil/Ricardo')}>Perfil do Ricardo</button>
             <button onClick={() => navigate('/perfil/Susany')}>Perfil da Susany</button>
 
+            <h3>Rotas adicionais - Atividade</h3>
+            <button onClick={() => navigate('./inicio')}>Acessar página de inicio</button>
+
 
 
         </div>
