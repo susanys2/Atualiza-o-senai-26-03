@@ -22,10 +22,13 @@ const Aula14 = () => {
             <hr />
             <h3>Rota dinamica com useParams</h3> {/* Criação de tela de perfil */}
             <button onClick={() => navigate('/perfil/Ricardo')}>Perfil do Ricardo</button>
+            <br />
             <button onClick={() => navigate('/perfil/Susany')}>Perfil da Susany</button>
 
             <h3>Rotas adicionais - Atividade</h3>
-            <button onClick={() => navigate('./inicio')}>Acessar página de inicio</button>
+            <button onClick={() => navigate('./inicio')}>Acessar página de inicio 📍</button>
+            <br />
+            <button onClick={() => navigate('./filme/Lilo e Stitch')}>Acessar página de Filmes 📸 </button>
 
 
 

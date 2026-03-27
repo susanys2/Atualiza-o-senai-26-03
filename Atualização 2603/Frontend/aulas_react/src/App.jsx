@@ -6,6 +6,7 @@ import Perfil from './pages/Perfil';
 import Inicio from './pages/Inicio';
 import Contato from './pages/Contato';
 import Detalhes from './pages/Detalhes';
+import Filme from './pages/Filme';
 
 function App() {
     return (
@@ -20,8 +21,8 @@ function App() {
                 <Route path='/inicio' element={<Inicio />} />
                 <Route path='/contato' element={<Contato />} />
                 <Route path='/detalhes' element={<Detalhes />} />
+                <Route path='/filme/:nomeFilme' element={<Filme />} />
             </Routes>
-           
         </BrowserRouter>
 
     )

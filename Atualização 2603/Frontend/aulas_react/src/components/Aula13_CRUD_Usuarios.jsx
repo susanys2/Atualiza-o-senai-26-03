@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import Aula13_Usuario from "./Aula13_Usuario"
+import { enderecoServidor } from '../utils' //pegando o conteudo e disponibilizando aqui 
+
 
 const Aula13_CRUD_Usuarios = () => {
     const [listaUsuarios, setListaUsuarios] = useState([])
@@ -15,7 +17,7 @@ const Aula13_CRUD_Usuarios = () => {
         }
 
         try {
-            const resposta = await fetch('http://10.130.42.68:3001/usuarios', {
+            const resposta = await fetch(`${enderecoServidor}/usuarios`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -38,7 +40,7 @@ const Aula13_CRUD_Usuarios = () => {
     async function botaoExcluir(id_usuario) {
 
         try {
-            const resposta = await fetch(`http://10.130.42.68:3001/usuarios/${id_usuario}`, {
+            const resposta = await fetch(`${enderecoServidor}/usuarios/${id_usuario}`, {
                 method: 'DELETE'
             })
 
@@ -66,7 +68,7 @@ const Aula13_CRUD_Usuarios = () => {
     //Função para buscar os dados de uma API
     async function buscarDados() {
         try {
-            const resposta = await fetch('http://10.130.42.68:3001/usuarios')
+            const resposta = await fetch(`${enderecoServidor}/usuarios`)
             const dados = await resposta.json()
             setListaUsuarios(dados)
 

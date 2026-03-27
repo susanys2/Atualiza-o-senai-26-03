@@ -6,6 +6,8 @@ function Inicio(){
             <h1>Bem Vindo!</h1>
             {/* Esse link trata-se do mesmo de: <a href='/' </a> */}
             <Link to="/detalhes">Página de Detalhes</Link> 
+            <br />
+            <Link to="/">Voltar para página Principal</Link> 
         </div>
     )
 }

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import Aula13_Produto from "./Aula13_Produto"
+import { enderecoServidor } from '../utils' //pegando o conteudo e disponibilizando aqui 
+
 
 const Aula13_CRUD_Produtos = () => {
     const [listaProdutos, setListaProdutos] = useState([])
@@ -38,11 +40,11 @@ const Aula13_CRUD_Produtos = () => {
         }
 
         try {
-            let endpoint = 'http://10.130.42.68:3001/produtos'
+            let endpoint = `${enderecoServidor}/produtos`
             let metodo = 'POST'
 
             if (editando == true){
-                endpoint = `http://10.130.42.68:3001/produtos/${id}`
+                endpoint = `${enderecoServidor}/produtos/${id}`
                 metodo = 'PUT'
             }
 
@@ -71,7 +73,7 @@ const Aula13_CRUD_Produtos = () => {
         if (!window.confirm('Você tem certeza que deseja excluir?')) return
 
         try {
-            const resposta = await fetch(`http://10.130.42.68:3001/produtos/${id_produto}`, {
+            const resposta = await fetch(`${enderecoServidor}/produtos/${id_produto}`, {
                 method: 'DELETE'
             })
 
@@ -104,7 +106,7 @@ const Aula13_CRUD_Produtos = () => {
     //Função para buscar os dados de uma API
     async function buscarDados() {
         try {
-            const resposta = await fetch('http://10.130.42.68:3001/produtos')
+            const resposta = await fetch(`${enderecoServidor}/produtos`)
             const dados = await resposta.json()
             setListaProdutos(dados)
 

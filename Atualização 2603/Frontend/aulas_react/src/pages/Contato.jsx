@@ -5,7 +5,7 @@ function Contato(){
         <div>
             <h1>Entre em Contato</h1>
             {/* Esse link trata-se do mesmo de: <a href='/' </a> */}
-            <Link to="/">Página de Inicio</Link> 
+            <Link to="/inicio">Página de Inicio</Link> 
         </div>
     )
 }
