@@ -1,15 +1,35 @@
-export default function App() {
-  return (
-    <div className="bg-black flex">
-      <div className="relative-group" >
-      <button className="text-black font-bold bg-radial-[at_50%_75%] from-sky-200 via-blue-400 to-indigo-900 to-90% rounded-3xl p-5 m-5 w-40 transition">Clique Aqui</button>
-       </div>
-      <button className="text-black font-bold bg-radial-[at_50%_75%] from-pink-200 via-pink-400 to-pink-900 to-90% rounded-3xl p-5 m-5 w-40" >Clique Aqui</button>
-      <button className="text-black font-bold bg-radial-[at_50%_75%] from-fuchsia-200 via-fuchsia-400 to-fuchsia-900 to-90% rounded-3xl p-5 m-5 w-40" >Clique Aqui</button>
+import { Route, BrowserRouter, Routes, Link } from "react-router-dom";
 
-      
+export default function App(){
+  return(
+    <BrowserRouter>
+    <div className="flex min-h-screen items-center justify-center bg-slate-950" >
+      <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/sobre" element={<Sobre/>}></Route>
+      </Routes>
     </div>
-
-    
+    </BrowserRouter>
   )
 }
+
+function Home() {
+  return (
+    <div className="flex flex-col items-center gap-4" >
+      <h1 className="text-3xl font-bold text-white">Home</h1>
+      <Link to="/sobre" className="rounded-lg bg-indigo-500 px-4 py-2 text-white">
+        Ir para Sobre
+      </Link>
+    </div>
+  )
+}
+
+function Sobre() {
+  return (
+    <div className="flex flex-col items-center gap-4" >
+      <h1 className="text-3xl font-bold text-emerald-400" >Sobre</h1>
+      <Link to="/" className="rounded-lg bg-slate-800 px-4 py-2 text-white">Voltar</Link>
+    </div>
+  )
+}
+

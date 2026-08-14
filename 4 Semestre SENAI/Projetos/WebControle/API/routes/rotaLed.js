@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { onMessage, TOPICO_ESTADO_LED, TOPICO_STATUS } from "../services/mqttClient.js";
+import { publicar, onMessage, TOPICO_ESTADO_LED, TOPICO_STATUS } from "../services/mqttClient.js";
 
 const router = Router();
 
@@ -17,8 +17,8 @@ onMessage(TOPICO_STATUS, (mensagem) => {
     console.log(`Mensagem Recebida no ${TOPICO_STATUS}: ${ultimoStatus}`)
 })
 
-router.get(`/status`, async(req, res) => {
-    try{
+router.get(`/status`, async (req, res) => {
+    try {
         console.log(`Status: ${ultimoStatus}`)
         console.log(`Status: ${ultimoEstadoLed}`)
 
@@ -26,9 +26,28 @@ router.get(`/status`, async(req, res) => {
             status: ultimoStatus,
             estadoLed: ultimoEstadoLed,
         })
-    }catch(error){
-        return res.status(500).json({error: `Erro ao obter dados`})
+    } catch (error) {
+        return res.status(500).json({ error: `Erro ao obter dados` })
     }
-})
+});
+
+router.post('/comando', async (req, res) => {
+    const { comando } = req.body; //o comando do corpo da página será recebido aqui!
+    try {
+        //Publicar no tópico assinado
+        await publicar(TOPICO_STATUS, comando) //topico que vai ler e tambem o comando
+        const estadoLed = comando === 'LIGADO' ? '1' : '0';
+        await publicar(TOPICO_ESTADO_LED, estadoLed)
+
+        return res.status(200).json({
+            message: 'Comando enviado!',
+            status: comando,
+            estadoled: estadoLed
+        })
+
+    } catch (error) {
+        return res.status(500).json({ error: 'Erro ao enviar comando!' })
+    }
+});
 
 export default router

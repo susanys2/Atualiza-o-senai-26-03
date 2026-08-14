@@ -56,7 +56,7 @@ function conectarMqtt() {
     //Quando receber uma mensagem alterada 
     mqttClient.on(`message`, (topic, message) => {
         //Se existe uma função cadastrada nesse topico, recebe a mensagem 
-        if(subscriptions[topic]){
+        if (subscriptions[topic]) {
             subscriptions[topic](message.toString())
         }
     })
@@ -89,11 +89,33 @@ function conectarMqtt() {
 
 }
 
-function onMessage(topic, callback){
+//Função de Escuta
+function onMessage(topic, callback) {
     subscriptions[topic] = callback
+}
+
+//Função para públicar 
+function publicar(topic, message) {
+  //Retorna uma promessa para usar nas rotas 
+  return new Promise((resolve, reject) => {
+    if(!mqttClient || !mqttClient.connected){
+        console.log('MQTT não está conectado!')
+        reject(new Error('Cliente MQTT não está conectado!'))
+        return; //encerra aqui se não estiver e volta para tentar a conexão novamente 
+    }                                 //elemento para armazenar o servidor - retém a informação 
+    mqttClient.publish(topic, message, {retain:true}, (eror) => {
+        if(error){
+            console.log('MQTT: ERRO AO PUBLICAR', error.message)
+            reject(new Error('Erro ao publicar'))
+        }else{
+            console.log(`MQTT: Enviado ${topic}: ${message}`)
+            resolve(); //deu certo 
+        }
+    }); //para publicar 
+  })
 }
 
 conectarMqtt();
 
 //Exportar as funções
-export{onMessage, TOPICO_ESTADO_LED, TOPICO_STATUS}
+export { publicar, onMessage, TOPICO_ESTADO_LED, TOPICO_STATUS }
