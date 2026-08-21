@@ -10,6 +10,7 @@ const MQTT_PASSWORD = 'TesteSenai1';
 const TOPICO_STATUS = 'aula/29/status';
 const TOPICO_ESTADO_LED = 'aula/29/estadoLed';
 const TOPICO_NIVEL_BOIA = 'aula/36/nivelBoia';
+const TOPICO_NIVEL_UMIDADE = 'aula/29/umidadeSolo';
 
 
 // ========== VARIÁVEIS GLOBAIS ==========
@@ -45,7 +46,8 @@ function conectarMqtt() {
         const topicos = [
             TOPICO_STATUS,
             TOPICO_ESTADO_LED,
-            TOPICO_NIVEL_BOIA
+            TOPICO_NIVEL_BOIA,
+            TOPICO_NIVEL_UMIDADE
         ]
 
         mqttClient.subscribe(topicos, (error) => {
@@ -120,4 +122,4 @@ function publicar(topic, message) {
 conectarMqtt();
 
 //Exportar as funções
-export { publicar, onMessage, TOPICO_NIVEL_BOIA, TOPICO_ESTADO_LED, TOPICO_STATUS }
+export { publicar, onMessage, TOPICO_NIVEL_BOIA, TOPICO_ESTADO_LED, TOPICO_STATUS, TOPICO_NIVEL_UMIDADE }
