@@ -11,7 +11,7 @@ onMessage(TOPICO_NIVEL_UMIDADE, (mensagem) => {
     console.log(`Mensagem Recebida no ${TOPICO_NIVEL_UMIDADE}: ${nivelUmidade}`)
 })
 
-router.get(`/controleUmidade`, async (req, res) => {
+router.get(`/nivelUmidade`, async (req, res) => {
     try {
         console.log(`Nivel da Umidade: ${nivelUmidade}`)
 

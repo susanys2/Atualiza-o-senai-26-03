@@ -11,6 +11,7 @@ const TOPICO_STATUS = 'aula/29/status';
 const TOPICO_ESTADO_LED = 'aula/29/estadoLed';
 const TOPICO_NIVEL_BOIA = 'aula/36/nivelBoia';
 const TOPICO_NIVEL_UMIDADE = 'aula/29/umidadeSolo';
+const TOPICO_STATUS_CHUVA = 'aula/36/sensorChuva';
 
 
 // ========== VARIÁVEIS GLOBAIS ==========
@@ -47,7 +48,8 @@ function conectarMqtt() {
             TOPICO_STATUS,
             TOPICO_ESTADO_LED,
             TOPICO_NIVEL_BOIA,
-            TOPICO_NIVEL_UMIDADE
+            TOPICO_NIVEL_UMIDADE,
+            TOPICO_STATUS_CHUVA
         ]
 
         mqttClient.subscribe(topicos, (error) => {
@@ -122,4 +124,4 @@ function publicar(topic, message) {
 conectarMqtt();
 
 //Exportar as funções
-export { publicar, onMessage, TOPICO_NIVEL_BOIA, TOPICO_ESTADO_LED, TOPICO_STATUS, TOPICO_NIVEL_UMIDADE }
+export { publicar, onMessage, TOPICO_NIVEL_BOIA, TOPICO_ESTADO_LED, TOPICO_STATUS, TOPICO_NIVEL_UMIDADE, TOPICO_STATUS_CHUVA }
