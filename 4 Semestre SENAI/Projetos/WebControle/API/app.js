@@ -18,9 +18,8 @@ app.use('/controleNivel', rotaNivel)
 app.use('/controleUmidade', rotaUmidade)
 app.use('/controleChuva', rotaChuva)
 
-// const porta = 3000
-// app.listen(porta, () => {
-//     console.log(`Servidor iniciado http://localhost:${porta}`)
-// })
+const porta = 3000
+app.listen(porta, () => {
+    console.log(`Servidor iniciado http://localhost:${porta}`)
+})
 
-export default app

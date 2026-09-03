@@ -11,7 +11,7 @@ onMessage(TOPICO_STATUS_CHUVA, (mensagem) => {
     console.log(`Mensagem Recebida no ${TOPICO_STATUS_CHUVA}: ${statusChuva}`)
 })
 
-router.get(`/controleChuva`, async (req, res) => {
+router.get(`/statusChuva`, async (req, res) => {
     try {
         console.log(`Status da Chuva: ${statusChuva}`)
 
