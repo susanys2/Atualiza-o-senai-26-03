@@ -65,7 +65,7 @@ export default function Principal() {
                         <span>Tela Valor de Umidade</span>
                     </Link>
                      <Link
-    onClick={() => setMenuAberto(false)}
+                     onClick={() => setMenuAberto(false)}
     to="/TelaRadarChuva"
     className="flex items-center gap-4 hover:bg-gray-700 p-2 rounded"
 >
