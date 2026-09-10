@@ -91,6 +91,7 @@ export default function Principal() {
                     <Route path="/TelaNivel" element={<TelaNivel />} />
                     <Route path="/ValorUmidade" element={<ValorUmidade />} />
                     <Route path="/TelaRadarChuva" element={<TelaRadarChuva />} />
+                    <Route path="/TelaRFID" element={<TelaRFID />} />
                 </Routes>
 
             </div>
