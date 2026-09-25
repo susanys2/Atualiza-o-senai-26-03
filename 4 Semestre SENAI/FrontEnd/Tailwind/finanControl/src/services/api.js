@@ -1,6 +1,6 @@
-export const API_URL = 'https://apifinancontrol-phi.vercel.app';
+export const API_URL = 'https://api-delta-six-64.vercel.app';
 
-export async function apifetch(baseUrl, endpoint, method = 'GET', body = null){
+export async function apiFetch(baseUrl, endpoint, method = 'GET', body = null){
     const token = localStorage.getItem('token');
 
     const headers = {
